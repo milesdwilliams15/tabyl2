@@ -15,7 +15,7 @@ by the tabyl() function and by then using them directly (in the following order!
     
     mtcars %>% group_by(cyl) %>% count(mpg) %>% mutate(percent = n / sum(n, na.rm = TRUE))
 
-However, this method requires some extra syntax that we might want to avoid in the future. So, with
+However, this method requires some extra syntax. The whole point of the tabyl() function is to make life easier. So, with
 the end in mind of reducing how much typing we have to use in the future, I created the following
 function: tabyl2()
     
@@ -27,7 +27,7 @@ function: tabyl2()
         mutate(percent = n/sum(n, na.rm=TRUE))
     }
 
-The guts are different, but the result is basically the same:
+The guts are different compared to the inner workings of tabyl(), but the result is basically the same:
 
     # Compare
     mtcars %>% group_by(cyl) %>% tabyl2(mpg)
